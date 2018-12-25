@@ -1,0 +1,57 @@
+let api = {
+    AuthLoginByWeixin:'/api/auth/login_by_weixin',//登陆
+    homeSowingMap:'/api/index/ad',//轮播图
+    actList:'/api/item/item',//活动list
+    classify:'/api/cat/catList',//分类
+    detail:'/api/item/itemId',//商品详情
+    careI:'/api/care/careI',//活动关注
+    needSave:'/api/need/save',//发布需求
+    saveM:'/api/merchant/saveM',//供应商签约
+    myItem:'/api/merchant/item',//获取我的发布
+    news:'/api/index/news',//获取首页新闻
+    smscode:'/api/user/smscode',//发送验证码
+    bindMobile:'/api/user/bindMobile',//校验验证码
+    careM:'/api/care/careM',//关注取消商家
+    merchant:'/api/merchant/merchant',//获取商家信息
+    orderList:'/api/order/list',//获取订单列表
+    dataValue:'/api/index/value',//获取订单列表
+    orderAdd:'/api/order/add',//获取订单列表
+    addSave:'/api/order/addSave',//获取订单列表
+    prepay:'/api/pay/prepay',//支付
+    info:'/api/user/info',//用户状态
+    careList:'/api/care/careList',//获取关注列表
+    recommendCatList:'/api/cat/recommendCatList',//获取推荐分类
+    help:'/api/index/help',//获取帮助列表
+    needList:'/api/need/needList',//获取消费者我的发布
+    create:'/api/item/create',//发布活动
+    helpById:'/api/index/helpById',//发布活动
+    list:'/api/need/list',//发布活动
+    upload:'/api/upload/upload',//图片上传
+    durationList:'/api/item/durationList',//选择时长
+    prepay2:'/api/pay/prepay2',//创建活动发布支付
+    duration:'/api/item/duration',//获取时长
+    site:'/api/merchant/site',//获取签约地址
+    itemOK:'/api/item/itemOK',//校验是否能提交订单
+    orderDetail:'/api/order/detail',//订单详情
+    verify:'/api/merchant/verify',//校验是否为商家
+    check:'/api/item/check',//到店核销
+    query:'/api/pay/query',//到店核销
+    query2:'/api/pay/query2',//到店核销
+    cancel:'/api/order/cancel',//取消订单
+    textById:'/api/index/textById',//热文
+    text:'/api/index/text',//热文
+    QRcode:'/api/index/QRcode',//二维码
+    queryJoin:'/api/merchant/queryJoin',//二维码
+    itemDel:'/api/item/delete',//二维码
+    preview:'/api/item/preview',//二维码
+    update:'/api/item/update',//二维码
+    share:'/api/item/share',//二维码
+    notice:'/api/index/notice',//二维码
+    screen:'/api/index/screen',//二维码
+    mean:'/api/grade/mean',//二维码
+    call:'/api/index/call',//二维码
+    grade:'/api/grade/grade',//二维码
+
+};
+
+export default api
