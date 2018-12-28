@@ -190,10 +190,22 @@
                         </span> -->
                     </span>
                 </span>
+
+
                 
                 <span class="detail-dec">
+                    <div style="border-bottom:1px #ddd solid;padding:10px 0px;border-top:5px #eee solid;">
+                        <img src="../../../static/img/icon/time1.png" style="background:black;width:20px;height:20px;margin-right:10px;" alt="">活动时间：{{start_time}}至{{overTime}}
+                    </div>npm
+                    <div style="border-bottom:1px #ddd solid;padding:10px 0px;">
+                        <img src="../../../static/img/icon/time.png" style="background:black;width:20px;height:20px;margin-right:10px;" alt="">
+                        活动地点：{{item_site}}
+                    </div>
+                    <div style="border-bottom:10px #eee solid;padding:10px 0px;">
+                        <img src="../../../static/img/icon/time.png" style="background:black;width:20px;height:20px;margin-right:10px;" alt="">活动时间：{{start_time}}至{{overTime}}
+                    </div>
                     <h4>
-                        <img src="../../../static/img/icon/dec.png" alt=""> 精心打造本地最专业的活动信息服务平台
+                        <img src="../../../static/img/icon/dec.png" alt="">总数量180/已预订数量130
                     </h4>
                     <span class="shop-link" @click="toSeller">
                         <img :src="shooImage" alt="">

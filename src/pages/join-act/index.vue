@@ -20,7 +20,7 @@
                 </li>
                 <li class="arrow">
                     <span class="picker">
-                        <span>活动关闭时间：</span><span style="font-weight: normal;">{{closeTime}}</span>
+                        <span>活动关闭时间：</span><span style="font-weight: normal;width:300rpx;">{{closeTime}}</span>
                         </span>
                     <!-- <picker @change="attrPickerChange" :value="attrInx" :range="attr">
                         
