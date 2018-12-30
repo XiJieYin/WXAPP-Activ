@@ -3,33 +3,23 @@
         <div class="nav-first attesta-bg">
             <ul class="attesta-lists">
                 <li class="arrow">
-                    <span class="picker">
-                        <span>支付方式：</span><span style="font-weight: normal;">目前只支持到店支付</span>
+                    <span class="picker" style="width:100%;">
+                        <span>交易方式：</span>
+                        <span style="font-weight: normal;width: 66%;">
+                            <picker @change="onlinePickerChange" :value="onlineInx" :range="online">
+                                <input type="text" style="width: 94%;margin-left:-16px;" :value="online[onlineInx]" placeholder="线上预约报名，线下门面交易" readonly="readonly">                                
+                            </picker>
                         </span>
+                    </span>
                     <!-- <picker @change="onlinePickerChange" :value="onlineInx" :range="online">
                         
                     </picker> -->
                 </li>
                 <li class="arrow">
-                    <span class="picker">
-                        <span>配送方式：</span><span style="font-weight: normal;">目前只支持到店自提</span>
-                        </span>
-                    <!-- <picker @change="attrPickerChange" :value="attrInx" :range="attr">
-                        
-                    </picker> -->
-                </li>
-                <li class="arrow">
-                    <span class="picker">
-                        <span>活动关闭时间：</span><span style="font-weight: normal;width:300rpx;">{{closeTime}}</span>
-                        </span>
-                    <!-- <picker @change="attrPickerChange" :value="attrInx" :range="attr">
-                        
-                    </picker> -->
-                </li>
-                <li class="arrow">
-                    <span class="picker">
-                        <span>支付状态：</span><span style="font-weight: normal;">未支付</span>
-                        </span>
+                    <span class="picker" style="width:100%;">
+                        <span>报名信息：</span>
+                        <span style="width: 66%;"><input style="width: 94%;margin-left:-16px;" type="text" placeholder="XXX(138xxxxxxxx)"></span>
+                    </span>
                     <!-- <picker @change="attrPickerChange" :value="attrInx" :range="attr">
                         
                     </picker> -->
@@ -47,7 +37,7 @@
                     <p style="color:#000000">{{title}}</p>
                     <p  style="color:#4c4c4c">{{sell_point}}</p>
                 </span>
-                <em class="red" style="color:#4c4c4c;text-align:right;">¥<b class="discounts">{{discounts_id}}</b>/<b class="zero">¥{{zero}}</b></em>
+                <!-- <em class="red" style="color:#4c4c4c;text-align:right;">¥<b class="discounts">{{discounts_id}}</b>/<b class="zero">¥{{zero}}</b></em> -->
             </dt>
             <dt class="join-act-list-num">
                 <span>购买数量</span>
@@ -57,29 +47,19 @@
                     <span class="opt-add" @click="calculation(true)">+</span>
                 </span>
             </dt>
-            <dt class="join-act-list-num">
-                <span v-show="genre!=2">需到店支付金额</span>
-                <span v-if="modified==2" v-show="genre!=2" class="join-act-list-amount mar6">
-                    ¥{{(discounts_id-price*(optNum>0?optNum:1))*optNum>0?(discounts_id-price*(optNum>0?optNum:1))*optNum:0}}
-                </span>
-                <span  v-if="modified==1" v-show="genre!=2" class="join-act-list-amount mar6">
-                    ¥{{discounts_id*optNum}}
-                </span>
-                <span v-if="genre==2" style="color:#309838">*下单后用户到店提货时，根据用户到店时活动当时的拼团情况进行活动金额的支付。</span>
-            </dt>
-        </dl>
-        <dl class="join-act-list">
             <dt class="join-act-list-num2">
                 <span class="margin-change">活动保证金</span>
                 <span class="join-act-list-amount red">
                     ¥{{price*(optNum>0?optNum:1)}}
                 </span>
-                <span class="reg-btn">
-                    <btn v-if="guarantee!=0" @handle-click="pay" cname="big-btn" text="微信支付"></btn>
-                    <btn v-if="guarantee==0" @handle-click="pay" cname="big-btn" text="立即参与"></btn>
-                </span>
             </dt>
         </dl>
+        <div style="clear: both;position: fixed;width: 100%;bottom: -2px;background: #fff;">
+            <div style="overflow: hidden;">
+                <span style="float: left;margin: 16px;">合计 <span style="color:#f9b667;">￥1</span></span>
+                <button style="width: 45%;float: right;background: #f34343;color: #fff;border-radius: 0px;" @click="pay">马上支付</button>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -178,8 +158,7 @@ export default {
             onlineInx:0,
             itemId:'',
             online:[
-                '到店支付',
-                '在线支付',
+                '线上预约报名，线下门店交易'
             ],
             attr:[
                 '到店自提',
@@ -341,7 +320,7 @@ export default {
                         title: '参与成功'
                     });
                     setTimeout(() => {
-                        wx.redirectTo({  url:'../home/main'})
+                        wx.redirectTo({  url:'../join-complete/main'})
                     }, 500);
                     return
                 }

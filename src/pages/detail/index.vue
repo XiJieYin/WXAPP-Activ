@@ -195,35 +195,43 @@
                 
                 <span class="detail-dec">
                     <div style="border-bottom:1px #ddd solid;padding:10px 0px;border-top:5px #eee solid;">
-                        <img src="../../../static/img/icon/time1.png" style="background:black;width:20px;height:20px;margin-right:10px;" alt="">活动时间：{{start_time}}至{{overTime}}
-                    </div>npm
+                        <img src="../../../static/img/icon/time.png" style="width:20px;height:20px;margin-right:10px;" alt="">活动时间：{{start_time}}至{{overTime}}
+                    </div>
                     <div style="border-bottom:1px #ddd solid;padding:10px 0px;">
-                        <img src="../../../static/img/icon/time.png" style="background:black;width:20px;height:20px;margin-right:10px;" alt="">
-                        活动地点：{{item_site}}
+                        <img src="../../../static/img/icon/location.png" style="width:20px;height:20px;margin-right:10px;float:left;" alt="">
+                        <div style="float:left;width:80%;">活动地点：{{item_site}}</div>
+                        <img src="../../../static/img/icon/right.png" style="width:20px;height:20px;margin-right:10px;float:right;" alt="">
+                        <div style="clear:both;height:0px;">&nbsp;</div>
                     </div>
                     <div style="border-bottom:10px #eee solid;padding:10px 0px;">
-                        <img src="../../../static/img/icon/time.png" style="background:black;width:20px;height:20px;margin-right:10px;" alt="">活动时间：{{start_time}}至{{overTime}}
+                        <img src="../../../static/img/icon/shopping_cart.png" style="width:20px;height:20px;margin-right:10px;" alt="">
+                        总数量180/已预订数量130
                     </div>
                     <h4>
-                        <img src="../../../static/img/icon/dec.png" alt="">总数量180/已预订数量130
+                        <img src="../../../static/img/icon/dec.png" alt=""> 精心打造本地最专业的活动信息服务平台
                     </h4>
-                    <span class="shop-link" @click="toSeller">
-                        <img :src="shooImage" alt="">
-                        <span style="display:inline-block;">{{merchant_name}}</span>
-                        <span class="shop-link-text">查看</span>
-                        <!-- （线下实体交易供货商） -->
+                    <span class="shop-link" @click="toSeller" style="float:left">
+                        <img :src="shooImage" alt="" style="border-radius:50%;width:80px;height:80px;float:left;">
+                        <span style="font-size:1.5em;width:200px;font-size:1.5em;font-weight: bold;float:left,border:0px">
+                            {{merchant_name}}
+                            <img src="../../../static/img/icon/right.png" style="width:20px;height:20px;margin-top:10px;float:right;margin-right:0px;" alt="">
+                        </span>
                     </span>
-                    <dl class="condition-list">
-                        <dt class="">活动时间：{{start_time}}至{{overTime}}</dt>
-                        <dt class="">活动地点：{{item_site}}</dt>
-                        <dt class="">每单最少起订量：{{least}}件</dt>
-                        <dt class="">库存数量：{{num}}件</dt>
-                        <dt class="" v-if="genre==2">活动成功标志：参与活动不少于{{two}}人</dt>
-                        <dt class="">送货方式：{{goods_desc}}</dt>
-                        <dt class="good-desc" v-if="supplement">{{supplement}}</dt>
-                        <dt v-if="two==1&&!three&&!five&&three!==0&&five!==0">价格递减方式：随团人数递增满足条件后价格递减，最</dt>
-                        <dt  v-if="two==1&&!three&&!five&&three!==0&&five!==0">终成交价格根据参加活动的人数来决定，分为三档：</dt>
-                    </dl>
+                    <div style="width:215px;float:right;font-size:0.8em;">
+                        <div style="width:200px;float:left;padding:5px 0px;">159活动 | 2044粉丝</div>
+                        <div style="width:200px;float:left;padding:5px 0px;color:orange;">活动发起者 | 已实名认证</div>
+                    </div>
+                    <dl class="condition-list" style="float:left;">
+                        活动呗是一款活动信息小工具，三十秒发布一场活动，随时参与，体验报名，以线下体验，交易为主，经上发布，参与为...
+                    </dl>              
+                    <div style="clear:both;padding-top:10px;">
+                        <button style="display:inline-block;width:45%;margin:5px;background:#aaa;color:#fff;">
+                            <img src="../../../static/img/icon/add.png" style="width:15px;height:15px;margin-right:5px;" alt="">关注
+                        </button>    
+                        <button style="display:inline-block;width:45%;margin:5px;background:#eee;color:#555;">
+                            <img src="../../../static/img/icon/call.png" style="width:15px;height:15px;margin-right:5px;" alt="">联系Ta
+                        </button>
+                    </div>      
                     <dl v-if="genre==2"  class="discount-list">
                         <dt :class="level>=1?'bg':''">
                             <span class="price-now">¥{{one?one:'免费'}}</span>
@@ -255,7 +263,9 @@
                     </dl>
                     <span class="enroll" v-if="joinList.length>0">
                         已报名({{joinList.length}})
-                        <span @click="more">更多</span>
+                        <span @click="more">
+                            更多报名<img src="../../../static/img/icon/right.png" style="width:20px;height:20px;margin-top:3px;float:right;margin-right:0px;" alt="">
+                        </span>
                     </span>
                     <ul class="enroll-list" v-if="joinList.length>0">
                         <li v-if="index<5" v-for="(item,index) in joinList" :key="index">
@@ -269,9 +279,37 @@
                     <span class="center-text" v-if="!detailShow">
                         下拉显示详情
                     </span>
-                    <span v-show="detailShow" style="text-align: justify;" class="item-desc" v-html="item_desc"></span>
-                    <img v-show="detailShow" mode="widthFix" class="img-desc" v-for="(item,index) in item_img" :key="index" :src="item" alt="">
+                    <div :class="{'detail-panels':detailPanelsShow}">
+                        <span v-show="detailShow" style="text-align: justify;" class="item-desc" v-html="item_desc"></span>
+                        <img v-show="detailShow" mode="widthFix" class="img-desc" v-for="(item,index) in item_img" :key="index" :src="item" alt="">
+                    </div>
+                    <div v-show="detailPanelsShow" @click="clickMore" style="text-align:center;padding:8px;background:#aaa;color:#fff;">
+                        展开更多详情<img src="../../../static/img/icon/down.png" style="width:15px;height:15px;" alt="">
+                    </div>
+
+                    <section class="panelbody section" :class="panelClass" style="margin-top:10px;">
+                        <h3>为你推荐
+                        </h3>
+                        <ul class="col">
+                            <li>
+                                <image src="https://huodp.cn/upload/20181127/220900852773c9.png" style="width:112px;height:100px;" />
+                                <div>
+                                    <h4 style="overflow:hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                        【免费活动】为你而来
+                                    </h4>
+                                    <p>尊享服务</p>
+                                    <span class="join"><img src="../../../static/img/icon/join.png" alt="">25人参与</span>
+                                    <span class="visit"><img src="../../../static/img/icon/eye.png" alt="">731人浏览</span>
+                                    <span class="visit"><img src="../../../static/img/icon/flag.png" alt="" style="margin-left:3px;">320m</span>
+                                    <div  class="div-btn" >
+                                        <proGress :width="51" :num="10" :percent="30.00"></proGress> 
+                                        <btn @handle-click="showApplyPanel()" text="我要报名"></btn>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     
+                    </section>
                 </span>
             </div>
             <!-- <span class="detail-btn">
@@ -281,7 +319,7 @@
             </span> -->
         </div>
         <div class="scroll-view-item tabs1" id="tabs1" style="dispaly:inline-block;width:100%;backgroud:#000;box-sizing:border-box;"></div>
-        </movable-area>
+        </movable-area>        
         <div class="nav-bar">
             <ul>
                 <li @click="goToHome('../home/main')">
@@ -293,7 +331,7 @@
                     <img v-if="item_type" src="../../../static/img/icon/like.png" />
                     <p>关注</p>
                 </li>
-                <li class="red" v-if="percent<100&&over_time>today&&status!=5&&status!=4" @click="joinAct('../classify/main')">
+                <li class="red" v-if="percent<100&&over_time>today&&status!=5&&status!=4" @click="showApplyPanel()">
                     我要报名
                 </li>
                 <li class="greed" v-if="status==5">
@@ -307,6 +345,36 @@
                 </li>
             </ul>
         </div>
+        <div @click="hideApplyPanel()" v-show="applyPanelShow" style="position:fixed;z-index:3000;top:0px;height:100vh;width:100vw;background:black;opacity:0.5;">
+        </div>
+        <div v-show="applyPanelShow" style="position:fixed;z-index:3001;bottom:0px;height:320px;width:100vw;background:white;opacity:1;">
+            <div style="padding: 10px;">
+                <div style="text-align: center;line-height: 1.5em;height: 40px;">
+                    <img @click="hideApplyPanel()" src="../../../static/img/icon/left.png" style="width:20px;height:20px;float:left" />
+                    <span>填写报名信息</span>
+                    <img @click="hideApplyPanel()" src="../../../static/img/icon/close.png" style="width:20px;height:20px;float:right"/>
+                </div>
+                <div style="overflow: hidden;">
+                    <div style="padding: 5px 0px;float: left;margin: 10px 0px;border-bottom: 1px #ccc solid;width: 100%;" >
+                        <span style="float:left">您的称呼</span><input style="float: left;margin-left: 10px;" type="text"> 
+                    </div>
+                    <div style="padding: 5px 0px;float: left;margin: 10px 0px;border-bottom: 1px #ccc solid;width: 100%;" >
+                        <span style="float:left">手 机 号</span><input style="float:left;margin-left: 16px;" type="text"> 
+                    </div>
+                    <div style="padding: 5px 0px;float: left;margin: 10px 0px;border-bottom: 1px #ccc solid;width: 100%;" >
+                        <span style="float:left">验 证 码</span>
+                        <input type="text" style="width: 40vw;display: inline-block;margin-left: 16px;"> 
+                        <button style="width: 29vw;font-size: 0.8em;display: inline-block;background: #f34343;color: #Fff;float: right;line-height: 2.1em;">获取验证码</button>
+                    </div>
+                </div> 
+            </div>
+            <div style="position: fixed;bottom: -4px;width: 100%;">
+                <div style="overflow: hidden;">
+                    <span style="float: left;margin: 16px;">合计 <span style="color:#f9b667;">￥1</span></span>
+                    <button style="width: 45%;float: right;background: #f34343;color: #fff;border-radius: 0px;" @click="joinAct()">立即报名</button>
+                </div>                
+            </div>
+        </div>
     </section>
 </template>
 
@@ -318,6 +386,7 @@ import config from '../../utils/config';
 import util from "../../utils/util.js";
 import api from "../../utils/api.js";
 import btn from "@/components/btn";
+import proGress from "@/components/proGress";
 const device = wx.getSystemInfoSync()
 const width = device.windowWidth
 const height = device.windowHeight - 50;
@@ -331,6 +400,8 @@ export default {
     },
     data() {
         return {
+            applyPanelShow:false,
+            detailPanelsShow:true,
             topPic:'',/*顶部图片*/
             bg:false,
             showImg:false,
@@ -406,7 +477,7 @@ export default {
         };
     },
     onPageScroll (e){
-        if(e.scrollTop>120){
+        if(e.scrollTop>0){
             this.currentTab = 1
         }else{
             this.currentTab = 0;
@@ -440,7 +511,8 @@ export default {
         panel,
         topNav,
         btn,
-        topSlider
+        topSlider,        
+        proGress
     },
     onShareAppMessage: function () {
         util.request(api.share,{
@@ -456,6 +528,9 @@ export default {
         
     },
     methods: {
+        clickMore:function(){
+            this.detailPanelsShow = false;
+        },
         formatDate:function (val) {
             var value=new Date(val);
             var year=value.getFullYear();
@@ -730,6 +805,12 @@ export default {
                 console.log('关注')
             })
         }, 
+        showApplyPanel:function(){
+            this.applyPanelShow = true;
+        },
+        hideApplyPanel:function(){
+            this.applyPanelShow = false;
+        },
         joinAct(){
             let url = '../join-act/main?itemId='+this.itemId;
             wx.navigateTo({  url:url })
@@ -911,7 +992,9 @@ export default {
         },
     },
     onShow(){
-        this.detailShow = false;
+        this.detailShow = true;
+        this.detailPanelsShow = true;
+        this.applyPanelShow = false;
         },
     onLoad(config){
         console.log(config)
@@ -934,6 +1017,112 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.div-btn{
+    margin-top:10px;
+    height:25px;
+    .progress{
+        margin-top:12px;
+    }
+}
+
+.panelbody {
+    padding-top: 0;
+    > h3 {
+        border-bottom: none;
+    }
+    ul.col {
+        display:flex;
+        flex-direction:column;
+        flex-wrap:wrap;
+        justify-content: space-around;
+        box-sizing: border-box;
+        image {
+            width: 120px;
+            height: 90px;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: top;
+        }
+        li {
+            display: inline-block;
+            height: 114px;
+            border-bottom: 1px solid #f7f7f7;
+            box-sizing: border-box;
+            padding-top: 10px;
+            > div {
+                display: inline-block;
+                width: 60%;
+                h4 {
+                    font-size: 14.3px;
+                    position: relative;
+                    span {
+                        position: absolute;
+                        font-size: 8.5px;
+                        color: #999999;
+                        right: 0;
+                        top: 3px;
+                        letter-spacing: 1px;
+                    }
+                }
+                p {
+                    color: #666666;
+                    overflow: hidden;
+                    width: 80%;
+                    letter-spacing: 1px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 11.5px;
+                    line-height: 23px;
+                    height: 23px;
+                }
+                .btn {
+                    float: right;
+                    border: none;
+                    background: linear-gradient(to right, #fa3346, #f67f67);
+                    font-weight: normal;
+                }
+                .join {
+                    color: #a2a0a0;
+                    font-size: 10px;
+                    
+                    background-position: 0px 1px;
+                    background-repeat: no-repeat;
+                    margin-right: 5px;
+                    position: relative;
+                    top: -3px;
+                    img{
+                        background-repeat: no-repeat;
+                        width:13px;
+                        height: 12px;
+                        vertical-align:bottom;
+                        margin-right: 5px;
+                    }
+                }
+                .visit {
+                    color: #a2a0a0;
+                    font-size: 10px;
+                    background-position: 0px 1px;
+                    background-repeat: no-repeat;
+                    position: relative;
+                    top: -3px;
+                    img{
+                        background-repeat: no-repeat;
+                        width:13px;
+                        vertical-align:bottom;
+                        height: 12px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.detail-panels{
+    height:120px;
+    overflow:hidden;
+}
 .detail-info2{
     height: 40px;
     width: 40px !important;

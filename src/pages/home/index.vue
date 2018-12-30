@@ -51,7 +51,7 @@
                         <p>{{item.sell_point?item.sell_point:''}}</p>
                         <span class="join"><img src="../../../static/img/icon/join.png" alt="">{{item.now?item.now:0}}人参与</span>
                         <span class="visit"><img src="../../../static/img/icon/eye.png" alt="">{{item.read_count?item.read_count:0}}人浏览</span>
-                        <span class="visit"><img src="../../../static/img/icon/location.png" alt="">320m</span>
+                        <span class="visit"><img src="../../../static/img/icon/flag.png" alt="" style="margin-left:3px;">320m</span>
                         <div  class="div-btn" >
                             <proGress :width="51" :num="item.shopping_num?item.shopping_num:0" :percent="item.percent?item.percent:0.00"></proGress>        
                             <btn v-if="item.percent<100&&item.over_time>today" @handle-click="joinClick(item)" text="我要报名"></btn>
